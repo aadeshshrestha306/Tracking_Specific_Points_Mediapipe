@@ -4,7 +4,7 @@ import cv2 as cv
 mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 
-video = "hand.mp4"
+video = "video.mp4"
 
 
 vidcap = cv.VideoCapture(video)
@@ -12,7 +12,8 @@ vidcap = cv.VideoCapture(video)
 winwidth = 480
 winheight = 750
 
-out = cv.VideoWriter('hand_tracking.mp4',-1,30.0, (winwidth,winheight))
+# if you want to save the video directly
+#out = cv.VideoWriter('hand_tracking.mp4',-1,30.0, (winwidth,winheight))
 
 
 with mp_hands.Hands(min_detection_confidence=0.5, min_tracking_confidence=0.5) as hands:
@@ -38,7 +39,10 @@ with mp_hands.Hands(min_detection_confidence=0.5, min_tracking_confidence=0.5) a
         # Resize the frame to the desired window size 
         resized_frame = cv.resize(frame, (winwidth, winheight))
 
-        out.write(resized_frame)
+        # saving the video
+        # out.write(resized_frame)
+
+        
         # Display the resized frame
         cv.imshow('Hand Tracking', resized_frame)
 
@@ -47,5 +51,5 @@ with mp_hands.Hands(min_detection_confidence=0.5, min_tracking_confidence=0.5) a
             break
 
 vidcap.release()
-out.release()
+# out.release()
 cv.destroyAllWindows()

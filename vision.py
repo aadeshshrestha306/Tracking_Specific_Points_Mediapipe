@@ -6,7 +6,6 @@ mp_drawing = mp.solutions.drawing_utils
 
 video = "video.mp4"
 
-
 vidcap = cv.VideoCapture(video)
 
 winwidth = 480
